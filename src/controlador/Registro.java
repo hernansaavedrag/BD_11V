@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -140,6 +142,45 @@ public class Registro {
         
     }
     
+    public List<Libro> buscarTodos(){
+        
+        List<Libro> lista = new ArrayList<>();
+        
+        
+        try {
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+                        
+            String query = "SELECT idlibro, titulo,autor,publicacion,precio,disponible FROM libro order by titulo";
+            PreparedStatement stmt = cnx.prepareStatement(query);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                Libro libro = new Libro();
+                libro.setIdLibro(rs.getInt("idlibro"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(rs.getString("autor"));
+                libro.setPublicacion(rs.getDate("publicacion"));
+                libro.setPrecio(rs.getInt("precio"));
+                libro.setDisponible(rs.getBoolean("disponible"));
+                
+                lista.add(libro);
+                
+            }
+            rs.close();
+            stmt.close();
+            cnx.close();
+        } catch (SQLException e) {
+            System.out.println("Error SQL al agregar Libro: " + e.getMessage());
+            
+        } catch(Exception e){
+            System.out.println("Error al agregar libro (EXCEPTION): " + e.getMessage());
+            
+        }
+        return lista;
+        
+    }
     
     
 }
