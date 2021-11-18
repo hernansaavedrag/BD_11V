@@ -40,6 +40,11 @@ public class Listar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jtxt_idBuscar.setText("Ingrese Id");
+        jtxt_idBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_idBuscarFocusGained(evt);
+            }
+        });
 
         jbtn_buscar.setText("Buscar");
         jbtn_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +156,12 @@ public class Listar extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jbtn_buscarActionPerformed
+
+    private void jtxt_idBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_idBuscarFocusGained
+        // TODO add your handling code here:
+        this.jtxt_idBuscar.setText("");
+        
+    }//GEN-LAST:event_jtxt_idBuscarFocusGained
 
     /**
      * @param args the command line arguments

@@ -57,6 +57,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ingrese Id"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtxt_idBuscarFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbtn_buscar">
       <Properties>
