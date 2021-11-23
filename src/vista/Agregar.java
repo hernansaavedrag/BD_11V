@@ -333,16 +333,18 @@ public class Agregar extends javax.swing.JFrame {
 
         Registro reg = new Registro();
 
-        //if (reg.buscarPorId(libro.getIdLibro()).getAutor() == null) {
-        if (reg.agregar(libro)) {
-            JOptionPane.showMessageDialog(this, "Se Agregó el libro", "Información", 1);
+   
+    
+        if (reg.buscarLibro(reg.buscarTodos(), titulo) == false) {
+            if (reg.agregar(libro)) {
+                JOptionPane.showMessageDialog(this, "Se Agregó el libro", "Información", 1);
 
+            } else {
+                JOptionPane.showMessageDialog(this, "No se Agregó el libro", "Información", 0);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "No se Agregó el libro", "Información", 0);
+            JOptionPane.showMessageDialog(this, "Libro ya existe", "Información", 1);
         }
-        //} else {
-        //    JOptionPane.showMessageDialog(this, "Libro ya existe", "Información", 1);
-//        }
 
     }//GEN-LAST:event_jbtn_enviarActionPerformed
 
