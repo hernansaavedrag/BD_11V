@@ -55,21 +55,21 @@ public class Listar extends javax.swing.JFrame {
 
         jtbl_datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Título", "Autor", "Precio", "Disponibilidad"
+                "ID", "Título", "Autor", "Precio", "Disponibilidad"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -94,7 +94,7 @@ public class Listar extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -135,23 +135,25 @@ public class Listar extends javax.swing.JFrame {
             List<Libro> lista = reg.buscarTodos();
 
             for (Libro libro : lista) {
+                id = libro.getIdLibro();
                 titulo = libro.getTitulo();
                 autor = libro.getAutor();
                 precio = libro.getPrecio();
                 disponible = libro.isDisponible();
 
-                modelo.addRow(new Object[]{titulo, autor, precio, disponible});
+                modelo.addRow(new Object[]{id,titulo, autor, precio, disponible});
             }
 
         } else { //consulta por id
 
             Libro libro = reg.buscarPorId(id);
+            id = libro.getIdLibro();
             titulo = libro.getTitulo();
             autor = libro.getAutor();
             precio = libro.getPrecio();
             disponible = libro.isDisponible();
 
-            modelo.addRow(new Object[]{titulo, autor, precio, disponible});
+            modelo.addRow(new Object[]{id,titulo, autor, precio, disponible});
         }
 
 
